@@ -1,0 +1,31 @@
+Test Case ID,Category,Method,Endpoint,Test Scenario,Test Data,Expected Status Code,Expected Result,Severity
+API-TC-001,Positive,POST,/employees,Create employee with valid data,"Valid employee details",201,Employee should be created successfully,High
+API-TC-002,Positive,GET,/employees,Retrieve all employees,"No additional data required",200,API should return employee list,High
+API-TC-003,Positive,GET,/employees/{id},Retrieve employee using valid ID,"Existing employee ID",200,API should return requested employee details,High
+API-TC-004,Positive,PUT,/employees/{id},Update employee with valid data,"Existing employee ID and valid update data",200,Employee details should be updated successfully,High
+API-TC-005,Positive,DELETE,/employees/{id},Delete employee using valid ID,"Existing employee ID",204,Employee should be deleted successfully,High
+API-TC-006,Positive,GET,/employees/{id}/benefits,Retrieve benefits for valid employee,"Existing employee ID",200,API should return employee benefits,Medium
+API-TC-007,Positive,GET,/employees/{id}/leave,Retrieve leave information for valid employee,"Existing employee ID",200,API should return employee leave information,Medium
+API-TC-008,Negative,POST,/employees,Create employee without required field,"Missing firstName",400,API should reject request and return validation error,High
+API-TC-009,Negative,POST,/employees,Create employee with invalid email,"Invalid email format",400,API should reject invalid email format,Medium
+API-TC-010,Negative,POST,/employees,Create employee with empty request body,"Empty JSON body",400,API should reject empty request,High
+API-TC-011,Negative,POST,/employees,Create employee with malformed JSON,"Invalid JSON syntax",400,API should return bad request error,Medium
+API-TC-012,Negative,GET,/employees/{id},Retrieve employee using non-existing ID,"Non-existing employee ID",404,API should return employee not found error,High
+API-TC-013,Negative,PUT,/employees/{id},Update employee using non-existing ID,"Non-existing employee ID",404,API should return employee not found error,High
+API-TC-014,Negative,DELETE,/employees/{id},Delete employee using non-existing ID,"Non-existing employee ID",404,API should return employee not found error,Medium
+API-TC-015,Negative,GET,/employees/{id}/benefits,Retrieve benefits using invalid employee ID,"Invalid employee ID",404,API should return appropriate not found error,Medium
+API-TC-016,Validation,POST,/employees,Validate employee email data type,"Numeric value supplied for email",400,API should reject invalid email data type,Medium
+API-TC-017,Validation,POST,/employees,Validate required firstName data type,"Numeric value supplied for firstName",400,API should reject invalid firstName data type,Medium
+API-TC-018,Validation,POST,/employees,Validate empty required field,"firstName is empty string",400,API should reject empty required field,Medium
+API-TC-019,Validation,POST,/employees,Validate null required field,"firstName is null",400,API should reject null required field,Medium
+API-TC-020,Boundary,POST,/employees,Validate maximum allowed firstName length,"First name at documented maximum length",201,API should accept valid boundary value,Low
+API-TC-021,Boundary,POST,/employees,Validate firstName exceeding maximum length,"First name above documented maximum length",400,API should reject value exceeding documented limit,Medium
+API-TC-022,Negative,POST,/employees,Create duplicate employee using existing email,"Existing employee email",409,API should reject duplicate employee data,High
+API-TC-023,Authentication,GET,/employees,Access API without authentication,"No authentication credentials",401,API should reject unauthenticated request,High
+API-TC-024,Authentication,GET,/employees,Access API with invalid authentication,"Invalid authentication token",401,API should reject invalid authentication,High
+API-TC-025,Authorization,PUT,/employees/{id},Update employee without required permission,"Authenticated user without update permission",403,API should reject unauthorized modification,High
+API-TC-026,Authorization,DELETE,/employees/{id},Delete employee without required permission,"Authenticated user without delete permission",403,API should reject unauthorized deletion,High
+API-TC-027,Response Validation,GET,/employees/{id},Validate employee response structure,"Existing employee ID",200,Response should contain expected fields and correct data types,Medium
+API-TC-028,Header Validation,POST,/employees,Validate Content-Type header,"Content-Type: application/json",201,API should correctly process JSON request,Medium
+API-TC-029,API Chaining,POST→GET→PUT→DELETE,/employees,Validate complete employee lifecycle,"Create employee then use returned ID for subsequent requests",Multiple,All dependent requests should complete successfully,High
+API-TC-030,Regression,GET,/employees/{id},Verify employee retrieval after API changes,"Existing employee ID",200,Previously working employee retrieval should continue to work,High
