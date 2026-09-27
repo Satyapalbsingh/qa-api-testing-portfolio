@@ -1,0 +1,31 @@
+Data ID,Data Category,Field,Value,Purpose,Expected Behavior
+DATA-001,Valid,firstName,Rahul,Valid employee creation,Accepted
+DATA-002,Valid,lastName,Sharma,Valid employee creation,Accepted
+DATA-003,Valid,email,rahul.sharma@example.com,Valid employee creation,Accepted
+DATA-004,Valid,department,Engineering,Valid employee creation,Accepted
+DATA-005,Valid,employeeId,EMP1001,Valid employee retrieval,Employee should be found
+DATA-006,Valid,firstName,Priya,Valid employee creation,Accepted
+DATA-007,Valid,lastName,Verma,Valid employee creation,Accepted
+DATA-008,Valid,email,priya.verma@example.com,Valid employee creation,Accepted
+DATA-009,Valid,department,QA,Valid employee creation,Accepted
+DATA-010,Valid,employeeId,EMP1002,Valid employee retrieval,Employee should be found
+DATA-011,Invalid,email,rahul.example.com,Invalid email validation,Request should be rejected
+DATA-012,Invalid,email,rahul@,Invalid email validation,Request should be rejected
+DATA-013,Invalid,email,12345,Invalid email data type,Request should be rejected
+DATA-014,Invalid,firstName,12345,Invalid firstName data type,Request should be rejected
+DATA-015,Invalid,firstName,,Empty required field,Request should be rejected
+DATA-016,Invalid,firstName,NULL,Null required field,Request should be rejected
+DATA-017,Invalid,requestBody,EMPTY,Empty request validation,Request should be rejected
+DATA-018,Invalid,employeeId,EMP9999,Non-existing employee validation,Employee should not be found
+DATA-019,Duplicate,email,rahul.sharma@example.com,Duplicate employee validation,Duplicate request should be rejected
+DATA-020,Boundary,firstName,MaximumAllowedLength,Maximum valid field length,Value should be accepted if within documented limit
+DATA-021,Boundary,firstName,ExceedsMaximumLength,Value above documented limit,Request should be rejected
+DATA-022,Authentication,Authorization,NO_TOKEN,Missing authentication validation,Request should be rejected
+DATA-023,Authentication,Authorization,INVALID_TOKEN,Invalid authentication validation,Request should be rejected
+DATA-024,Authorization,role,READ_ONLY,Unauthorized update/delete validation,Modification should be rejected
+DATA-025,Authorization,role,ADMIN,Authorized modification validation,Modification should be allowed
+DATA-026,Header,Content-Type,application/json,Valid JSON request validation,Request should be processed
+DATA-027,Header,Content-Type,text/plain,Invalid content type validation,Request should be rejected if JSON is required
+DATA-028,Invalid,department,12345,Invalid department data type,Request should be rejected
+DATA-029,Invalid,employeeId,INVALID-ID,Invalid employee ID format,Request should be rejected
+DATA-030,Valid,department,Finance,Valid department value,Accepted
