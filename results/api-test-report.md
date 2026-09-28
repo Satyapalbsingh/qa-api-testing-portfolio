@@ -670,4 +670,4 @@ Next planned activities:
 4. Add API test report to GitHub
 5. Add sample API findings documentation
 6. Create project README
-7. Integrate API testing with Playwright automation
+7. Integrate API testing with Playwright automation.
