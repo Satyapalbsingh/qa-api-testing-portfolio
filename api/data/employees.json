@@ -9,111 +9,30 @@
     "status": "ACTIVE"
   },
   {
-    "employeeId": "EMP1004",
-    "firstName": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy",
-    "lastName": "Test",
-    "email": "boundary.52@example.com",
-    "department": "Engineering",
+    "employeeId": "EMP1002",
+    "firstName": "Priya",
+    "lastName": "Singh",
+    "email": "priya.singh@example.com",
+    "department": "QA",
     "role": "QA Engineer",
     "status": "ACTIVE"
   },
   {
-    "employeeId": "EMP1005",
-    "firstName": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkhhghdhdghdghgshgdhsgaskajslmnopqrstuvwxy",
-    "lastName": "Test",
-    "email": "boundary.53@example.com",
-    "department": "Engineering",
-    "role": "QA Engineer",
-    "status": "ACTIVE"
-  },
-  {
-    "employeeId": "EMP1006",
-    "firstName": "Ab",
-    "lastName": "Test",
-    "email": "boundary.2@example.com",
-    "department": "Engineering",
-    "role": "QA Engineer",
-    "status": "ACTIVE"
-  },
-  {
-    "employeeId": "EMP1007",
-    "firstName": "Raj",
-    "lastName": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy",
-    "email": "lastname.51@example.com",
-    "department": "Engineering",
-    "role": "QA Engineer",
-    "status": "ACTIVE"
-  },
-  {
-    "employeeId": "EMP1009",
-    "firstName": "Raj",
-    "lastName": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwx",
-    "email": "lastname.50char@example.com",
-    "department": "Engineering",
-    "role": "QA Engineer",
-    "status": "ACTIVE"
-  },
-  {
-    "employeeId": "EMP1010",
+    "employeeId": "EMP1003",
     "firstName": "Amit",
-    "lastName": "Kumar",
-    "email": "invalid.department@example.com",
-    "department": "Marketing",
-    "role": "QA Engineer",
+    "lastName": "Verma",
+    "email": "amit.verma@example.com",
+    "department": "Product",
+    "role": "Product Manager",
     "status": "ACTIVE"
   },
   {
-    "employeeId": "EMP1012",
-    "firstName": "Ravi",
-    "lastName": "Sharma",
-    "email": "invalid.status@example.com",
-    "department": "Engineering",
-    "role": "QA Engineer",
-    "status": "PENDING"
-  },
-  {
-    "employeeId": "EMP1013",
-    "firstName": "Ravi",
-    "lastName": "Sharma",
-    "email": "valid.inactive.status@example.com",
-    "department": "Engineering",
-    "role": "QA Engineer",
+    "employeeId": "EMP1004",
+    "firstName": "Neha",
+    "lastName": "Patel",
+    "email": "neha.patel@example.com",
+    "department": "Finance",
+    "role": "Finance Analyst",
     "status": "INACTIVE"
-  },
-  {
-    "employeeId": "EMP1010",
-    "firstName": "Postman",
-    "lastName": "Test",
-    "email": "postman.test@example.com",
-    "department": "QA",
-    "role": "QA Engineer",
-    "status": "ACTIVE"
-  },
-  {
-    "employeeId": "EMP1011",
-    "firstName": "vishal",
-    "lastName": "singh",
-    "email": "vishal.singh.2026@example.com",
-    "department": "QA",
-    "role": "QA Engineer",
-    "status": "ACTIVE"
-  },
-  {
-    "employeeId": "EMP1012",
-    "firstName": "vishal",
-    "lastName": "singh",
-    "email": "vishal101.singh.2026@example.com",
-    "department": "QA",
-    "role": "QA Engineer",
-    "status": "ACTIVE"
-  },
-  {
-    "employeeId": "EMP1013",
-    "firstName": "vishal",
-    "lastName": "singh",
-    "email": "vishal100.singh.2026@example.com",
-    "department": "QA",
-    "role": "QA Engineer",
-    "status": "ACTIVE"
   }
 ]

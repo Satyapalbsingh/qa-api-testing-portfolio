@@ -64,6 +64,7 @@ app.get("/", (req, res) => {
 });
 
 // Create Employee
+// Create Employee
 app.post("/api/v1/employees", authenticate, authorizeWrite, (req, res) => {
   const employee = req.body;
   const employees = getEmployees();
@@ -79,65 +80,84 @@ app.post("/api/v1/employees", authenticate, authorizeWrite, (req, res) => {
       error: "Required employee fields are missing"
     });
   }
-if (
-  typeof employee.firstName !== "string" ||
-  employee.firstName.length < 2 ||
-  employee.firstName.length > 50
-) {
-  return res.status(400).json({
-    error: "firstName must be between 2 and 50 characters"
-  });
-}
-if (
-  typeof employee.lastName !== "string" ||
-  employee.lastName.length < 2 ||
-  employee.lastName.length > 50
-) {
-  return res.status(400).json({
-    error: "lastName must be between 2 and 50 characters"
-  });
-}
-const duplicateEmail = employees.find(
-  (emp) => emp.email.toLowerCase() === employee.email.toLowerCase()
-);
 
-if (duplicateEmail) {
-  return res.status(409).json({
-    error: "Employee with this email already exists"
-  });
-}
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-if (!emailPattern.test(employee.email)) {
-  return res.status(400).json({
-    error: "Invalid email format"
-  });
-}
-const allowedDepartments = [
-  "Engineering",
-  "QA",
-  "Finance",
-  "HR",
-  "Product"
-];
+  if (!emailPattern.test(employee.email)) {
+    return res.status(400).json({
+      error: "Invalid email format"
+    });
+  }
 
-if (!allowedDepartments.includes(employee.department)) {
-  return res.status(400).json({
-    error: "Invalid department"
-  });
-}
-const allowedStatuses = [
-  "ACTIVE",
-  "INACTIVE"
-];
+  const duplicateEmail = employees.find(
+    (emp) => emp.email.toLowerCase() === employee.email.toLowerCase()
+  );
 
-if (employee.status && !allowedStatuses.includes(employee.status)) {
-  return res.status(400).json({
-    error: "Invalid status"
-  });
-}
+  if (duplicateEmail) {
+    return res.status(409).json({
+      error: "Employee with this email already exists"
+    });
+  }
+
+  if (
+    typeof employee.firstName !== "string" ||
+    employee.firstName.length < 2 ||
+    employee.firstName.length > 50
+  ) {
+    return res.status(400).json({
+      error: "firstName must be between 2 and 50 characters"
+    });
+  }
+
+  if (
+    typeof employee.lastName !== "string" ||
+    employee.lastName.length < 2 ||
+    employee.lastName.length > 50
+  ) {
+    return res.status(400).json({
+      error: "lastName must be between 2 and 50 characters"
+    });
+  }
+
+  const allowedDepartments = [
+    "Engineering",
+    "QA",
+    "Finance",
+    "HR",
+    "Product"
+  ];
+
+  if (!allowedDepartments.includes(employee.department)) {
+    return res.status(400).json({
+      error: "Invalid department"
+    });
+  }
+
+  const allowedStatuses = [
+    "ACTIVE",
+    "INACTIVE"
+  ];
+
+  if (
+    employee.status !== undefined &&
+    !allowedStatuses.includes(employee.status)
+  ) {
+    return res.status(400).json({
+      error: "Invalid status"
+    });
+  }
+
+  const nextEmployeeNumber =
+    employees.length === 0
+      ? 1001
+      : Math.max(
+          ...employees.map(
+            (emp) => parseInt(emp.employeeId.replace("EMP", ""), 10)
+          )
+        ) + 1;
+
   const newEmployee = {
-    employeeId: `EMP${1001 + employees.length}`,
+    employeeId: `EMP${nextEmployeeNumber}`,
     firstName: employee.firstName,
     lastName: employee.lastName,
     email: employee.email,
@@ -150,15 +170,7 @@ if (employee.status && !allowedStatuses.includes(employee.status)) {
   saveEmployees(employees);
 
   res.status(201).json(newEmployee);
-});
-
-// Get All Employees
-app.get("/api/v1/employees", authenticate, (req, res) => {
-  const employees = getEmployees();
-
-  res.status(200).json(employees);
-});
-// Get Employee by ID
+});// Get Employee by ID
 app.get("/api/v1/employees/:employeeId", authenticate, (req, res) => {
 const employeeIdPattern = /^EMP\d{4}$/;
 
